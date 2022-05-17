@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+{% block title %}Agregar productos{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Gestión de stock de {{ request.user.name }}</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="precio" name="precio" placeholder="precio" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                <form/>
+            </div>     
+        </div> 
+    </div>
+{% endblock %}
