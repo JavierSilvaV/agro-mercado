@@ -57,7 +57,7 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
     name = models.CharField(max_length=150)
     mobile = models.CharField(max_length=20, blank=True)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -68,8 +68,8 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ["name"]
 
     class Meta:
-        verbose_name = "Accounts"
-        verbose_name_plural = "Accounts"
+        verbose_name = "Cuenta de usuario"
+        verbose_name_plural = "Cuentas de usuario"
 
     def email_user(self, subject, message):
         send_mail(
@@ -90,21 +90,21 @@ class Address(models.Model):
     """
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    customer = models.ForeignKey(Customer, verbose_name=_("Customer"), on_delete=models.CASCADE)
-    full_name = models.CharField(_("Full Name"), max_length=150)
-    phone = models.CharField(_("Phone Number"), max_length=50)
-    postcode = models.CharField(_("Postcode"), max_length=50)
-    address_line = models.CharField(_("Address Line 1"), max_length=255)
-    address_line2 = models.CharField(_("Address Line 2"), max_length=255)
-    town_city = models.CharField(_("Town/City/State"), max_length=150)
-    delivery_instructions = models.CharField(_("Delivery Instructions"), max_length=255)
+    customer = models.ForeignKey(Customer, verbose_name=_("Cliente"), on_delete=models.CASCADE)
+    full_name = models.CharField(_("Nombre completo"), max_length=150)
+    phone = models.CharField(_("Número de télefono"), max_length=50)
+    postcode = models.CharField(_("Código postal"), max_length=50)
+    address_line = models.CharField(_("Dirección 1"), max_length=255)
+    address_line2 = models.CharField(_("Dirección 1"), max_length=255)
+    town_city = models.CharField(_("Comuna/Ciudad/Region"), max_length=150)
+    delivery_instructions = models.CharField(_("Instrucciones de despacho"), max_length=255)
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
     default = models.BooleanField(_("Default"), default=False)
 
     class Meta:
-        verbose_name = "Address"
-        verbose_name_plural = "Addresses"
+        verbose_name = "Dirección"
+        verbose_name_plural = "Direcciones"
 
     def __str__(self):
         return "{} Address".format(self.full_name)

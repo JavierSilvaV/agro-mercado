@@ -1,25 +1,29 @@
 {% extends "../base.html" %}
 {% block title %}Agregar productos{% endblock %}
 {% block content %}
+{% load crispy_forms_tags %}
 
-<div class="row">
-    <div class="col-sm-12">
-        <h2>Gestión de stock de {{ request.user.name }}</h2>
-        <div class="card">
-            <div class="card-body">
-                <form action="" method="POST">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+<div class="min-vh-100 d-flex flex-colum py-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 mx-auto animate__animated animate__backInRight animate__delay-0.5s mt-3">
+                {% load crispy_forms_tags %}
+                <div class="card p-2">
+                    <h3 class="animate__animated animate__bounceInDown animate__delay-1s text-center my-2">PRODUCTO</h3>
+                    <div class="card body p-2">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %} {{ form | crispy }}
+                            <div class="d-flex justify-content-end">
+                                <a href="/listar-productos/" class="btn btn-secondary mt-2 mx-2" button ">Cancelar</a>
+                        <button type="submit " class="btn btn-danger mt-2 mx-2 " button ">Agregar</a>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="precio" name="precio" placeholder="precio" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
-                    </div>
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                <form/>
-            </div>     
-        </div> 
+                </div>
+            </div>
+        </div>
     </div>
+
+</div>
+
 {% endblock %}

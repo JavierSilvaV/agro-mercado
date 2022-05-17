@@ -1,16 +1,16 @@
 {% extends "../sub_base.html" %}
-{% block title %}Reset Status{% endblock %}
+{% block title %}Restablecer contraseña{% endblock %}
 {% block content %}
 
 <div class="container">
     <div>
         {% if 'email' in request.get_full_path %}
-        <h3 class="mb-4">Password Reset Success</h3>
-        <p>Check your email for instructions</p>
+        <h3 class="mb-4">Reestablecimiento de contraseña correcto</h3>
+        <p>Revisa tu correo electronico para más instrucciones</p>
         {% endif%}
         {% if 'complete' in request.get_full_path %}
-        <h3 class="mb-4">Password Reset Success</h3>
-        <a href="{% url "account:login" %}">Login</a>
+        <h3 class="mb-4">Reestablecimiento de contraseña correcto</h3>
+        <a href="{% url "account:login" %}">Iniciar sesión</a>
         {% endif%}
     </div>
 </div>

@@ -12,6 +12,9 @@
                         <th>Nombre {{ producto.title }}</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
+                        <th>Categoría</th>
+                        <th>Tipo producto</th>
+                        <th>Publicado</th>
                         <th colspan="2">Opciones</th>
                     </tr>
                 </tread>
@@ -22,9 +25,12 @@
                         <td>{{ p.title }}</td>
                         <td>{{ p.regular_price }}</td>
                         <td>{{ p.stock }}</td>
+                        <td>{{ p.category }}</td>
+                        <td>{{ p.product_type }}</td>
+                        <td>{{ p.is_active }}</td>
                         <td colspan="2">
-                            <a class="btn btn-secondary btn-sm" href="#" type="button"><i class="fa fa-pen"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#" type="button"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-secondary btn-sm" href="/editar-producto/{{p.id}}/" type="button"><i class="fa fa-pen"></i></a>
+                            <a class="btn btn-danger btn-sm" href="/eliminar-producto/{{p.id}}/" type="button"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     {% endfor %}

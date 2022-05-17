@@ -77,8 +77,10 @@ class Product(models.Model):
     The Product table contining all product items.
     """
 
-    product_type = models.ForeignKey(ProductType, on_delete=models.RESTRICT)
-    category = models.ForeignKey(Category, on_delete=models.RESTRICT)
+    product_type = models.ForeignKey(ProductType, on_delete=models.RESTRICT,
+        verbose_name="Tipo de producto")
+    category = models.ForeignKey(Category, on_delete=models.RESTRICT,
+        verbose_name="Categoría")
     title = models.CharField(
         verbose_name=_("Título"),	
         help_text=_("Requerido"),
@@ -92,7 +94,8 @@ class Product(models.Model):
         default=""
     )
     description = models.TextField(verbose_name=_("Descripción"), help_text=_("No requerido"), blank=True)
-    slug = models.SlugField(max_length=255)
+    slug = models.SlugField(max_length=255,
+                            verbose_name="URL")
     regular_price = models.PositiveIntegerField(
         verbose_name=_("Precio normal"),
         help_text=_("Valor por ítem"),
@@ -103,7 +106,7 @@ class Product(models.Model):
         },
     )
     discount_price = models.PositiveIntegerField(
-        verbose_name=_("Discount price"),
+        verbose_name=_("Precio de descuento"),
         help_text=_("Descuento por ítem"),
         error_messages={
             "name": {

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "ecommerce.apps.basket",
     "ecommerce.apps.orders",
     "mptt",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
